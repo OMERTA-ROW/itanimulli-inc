@@ -2,7 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { DocumentPage, DocumentSection, PageHeading, PlaceholderNotice, Seal } from "@/components/site/document-layout";
+import { DocumentPage, DocumentSection, PageHeading, PlaceholderNotice } from "@/components/site/document-layout";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,7 +24,6 @@ function HomePage() {
   return (
     <DocumentPage page="01 / 06">
       <section className="mx-auto flex max-w-6xl flex-col items-center text-center">
-        <div className="sm:hidden"><Seal compact /></div>
         <PageHeading eyebrow="Conley, Georgia" title="Itanimulli Inc.">
           <p className="text-center text-primary/80">An evolving corporation, along with society.</p>
         </PageHeading>
