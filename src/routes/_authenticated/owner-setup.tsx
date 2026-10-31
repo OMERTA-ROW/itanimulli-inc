@@ -39,7 +39,7 @@ function OwnerSetup() {
               try {
                 const r = await claim();
                 if (r.ok) { await qc.invalidateQueries({ queryKey: ["my-access"] }); setMsg({ tone: "info", text: "You are now the owner." }); }
-                else setMsg({ tone: "error", text: messages[r.reason] });
+                else setMsg({ tone: "error", text: messages[r.reason] ?? "Owner setup was refused." });
               } catch { setMsg({ tone: "error", text: "Owner setup failed. Sign in again and retry." }); }
             }}>Claim Owner Role</Button>
           )}

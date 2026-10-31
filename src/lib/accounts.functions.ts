@@ -77,7 +77,7 @@ export const createInvitation = createServerFn({ method: "POST" })
     const expires = new Date(Date.now() + data.days * 86_400_000).toISOString();
     const { data: row, error } = await context.supabase
       .from("invitations")
-      .insert({ email: data.email, role: data.role, token_hash: await sha256Hex(token), created_by: context.userId, expires_at: expires })
+      .insert({ email: data.email, role: data.role as AppRole, token_hash: await sha256Hex(token), created_by: context.userId, expires_at: expires })
       .select("id, email, role, expires_at")
       .single();
     if (error) throw new Error("Could not create the invitation");

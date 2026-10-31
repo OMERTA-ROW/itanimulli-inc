@@ -91,7 +91,7 @@ function AuthNavLink({ onNavigate }: { onNavigate: () => void }) {
   return session ? (
     <Link to="/dashboard" onClick={onNavigate} className={cls}>My Account</Link>
   ) : (
-    <Link to="/auth" search={{ redirect: undefined }} onClick={onNavigate} className={cls}>Member Sign In</Link>
+    <Link to="/auth" onClick={onNavigate} className={cls}>Member Sign In</Link>
   );
 }
 
