@@ -4,6 +4,7 @@ import { useState, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useSession } from "@/hooks/use-session";
 
 const navigation = [
   { to: "/", label: "Home" },
@@ -77,8 +78,20 @@ function SiteNavigation() {
             </Link>
           );
         })}
+        <AuthNavLink onNavigate={() => setOpen(false)} />
       </div>
     </nav>
+  );
+}
+
+function AuthNavLink({ onNavigate }: { onNavigate: () => void }) {
+  const { session, ready } = useSession();
+  if (!ready) return null;
+  const cls = "document-label border border-primary/45 px-4 py-3 text-xs text-primary transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring lg:ml-3";
+  return session ? (
+    <Link to="/dashboard" onClick={onNavigate} className={cls}>My Account</Link>
+  ) : (
+    <Link to="/auth" onClick={onNavigate} className={cls}>Member Sign In</Link>
   );
 }
 
